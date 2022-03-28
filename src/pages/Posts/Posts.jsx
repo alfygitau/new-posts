@@ -9,10 +9,10 @@ const Posts = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       const response = await axios.get(
-        "https://jsonplaceholder.typicode.com/posts"
+        "https://dummyjson.com/posts"
       );
       console.log(response.data);
-      setPosts(response.data);
+      setPosts(response.data.posts);
     };
     fetchPosts();
   }, []);

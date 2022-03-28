@@ -12,9 +12,9 @@ const PostComment = () => {
   useEffect(() => {
     const fetchComments = async () => {
       const response = await axios.get(
-        `https://jsonplaceholder.typicode.com/comments?postId=${postId}`
+        `https://dummyjson.com/posts/${postId}/comments`
       );
-      setPostComments(response.data);
+      setPostComments(response.data.comments);
     };
     fetchComments();
   }, [postId]);
@@ -27,8 +27,8 @@ const PostComment = () => {
       {postComments.map((comments) => (
         <div className="comments" key={comments.id}>
           <h5>
-            <span>{comments.name}. &nbsp;</span>
-            {comments.title}
+            <span>{comments.name} &nbsp;</span>
+            {comments.user.username}
           </h5>
           <p>{comments.body}</p>
         </div>
